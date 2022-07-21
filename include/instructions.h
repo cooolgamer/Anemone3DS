@@ -35,20 +35,20 @@ Instructions_s normal_instructions[MODE_AMOUNT] = {
         .info_line = NULL,
         .instructions = {
             {
-                "\uE000 Hold to install",
-                "\uE001 Queue shuffle theme"
+                "\uE000 Maintenir: installer",
+                "\uE001 Mettre thème aléatoire"
             },
             {
-                "\uE002 Hold for more",
-                "\uE003 Preview theme"
+                "\uE002 Maintenir pour +",
+                "\uE003 Aperçu"
             },
             {
-                "\uE004 Switch to splashes",
-                "\uE005 Scan QR code"
+                "\uE004 Menu des splashs",
+                "\uE005 Scanner un QR code"
             },
             {
-                "Exit",
-                "Delete from SD"
+                "Quitter",
+                "Effacer"
             }
         }
     },
@@ -56,42 +56,42 @@ Instructions_s normal_instructions[MODE_AMOUNT] = {
         .info_line = NULL,
         .instructions = {
             {
-                "\uE000 Install splash",
-                "\uE001 Delete installed splash"
+                "\uE000 Installer",
+                "\uE001 Effacer splash installé"
             },
             {
-                "\uE002 Hold for more",
-                "\uE003 Preview splash"
+                "\uE002 Maintenir pour +",
+                "\uE003 Aperçu"
             },
             {
-                "\uE004 Switch to themes",
-                "\uE005 Scan QR code"
+                "\uE004 Menu des thèmes",
+                "\uE005 Scanner un QR code"
             },
             {
-                "Exit",
-                "Delete from SD"
+                "Quitter",
+                "Effacer"
             }
         }
     }
 };
 
 Instructions_s install_instructions = {
-    .info_line = "Release \uE000 to cancel or hold \uE006 and release \uE000 to install",
+    .info_line = "Relâchez \uE000: annuler. Maintenez \uE006 et relâchez \uE000: installer",
     .instructions = {
         {
-            "\uE079 Normal install",
-            "\uE07A Shuffle install"
+            "\uE079 Installation normale",
+            "\uE07A Installation aléatoire"
         },
         {
-            "\uE07B BGM-only install",
-            "\uE07C No-BGM install"
+            "\uE07B Installer que musique",
+            "\uE07C Installer sans musique"
         },
         {
             NULL,
             NULL
         },
         {
-            "Exit",
+            "Quitter",
             NULL
         }
     }
@@ -99,14 +99,14 @@ Instructions_s install_instructions = {
 
 Instructions_s extra_instructions[3] = {
     {
-        .info_line = "Release \uE002 to cancel or hold \uE006 and release \uE002 to sort",
+        .info_line = "Relâchez \uE002: annuler. Maintenez \uE006 et relâchez \uE002: trier",
         .instructions = {
             {
-                "\uE079 Sort by name",
-                "\uE07A Sort by author"
+                "\uE079 Trier par nom",
+                "\uE07A Trier par auteur"
             },
             {
-                "\uE07B Sort by filename",
+                "\uE07B Trier par nom de fichier",
                 NULL
             },
             {
@@ -114,38 +114,38 @@ Instructions_s extra_instructions[3] = {
                 NULL
             },
             {
-                "Exit",
+                "Quitter",
                 NULL
             }
         }
     },
     {
-        .info_line = "Release \uE002 to cancel or hold \uE006 and release \uE002 to do stuff",
+        .info_line = "Relâchez \uE002: annuler. Maintenez \uE006 et relâchez \uE002: choisir",
         .instructions = {
             {
                 "\uE079 Jump in the list",
-                "\uE07A Reload broken icons"
+                "\uE07A Actualiser les icônes"
             },
             {
-                "\uE07B Browse ThemePlaza",
+                "\uE07B Aller sur ThemePlaza",
                 NULL
             },
             {
-                "\uE004 Sorting menu",
-                "\uE005 Dumping menu"
+                "\uE004 Trier",
+                "\uE005 Dump"
             },
             {
-                "Exit",
+                "Quitter",
                 NULL
             }
         }
     },
     {
-        .info_line = "Release \uE002 to cancel or hold \uE006 and release \uE002 to dump",
+        .info_line = "Relâchez \uE002: annuler. Maintenez \uE006 et relâchez \uE002: dump",
         .instructions = {
             {
-                "\uE079 Dump Current Theme",
-                "\uE07A Dump All Themes"
+                "\uE079 Dump le thème actuel",
+                "\uE07A Dump tous les thèmes"
             },
             {
                 NULL,
@@ -156,7 +156,7 @@ Instructions_s extra_instructions[3] = {
                 NULL
             },
             {
-                "Exit",
+                "Quitter",
                 NULL
             }
         }
