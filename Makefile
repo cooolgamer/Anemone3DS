@@ -34,7 +34,7 @@ include $(DEVKITARM)/3ds_rules
 
 # Your values.
 APP_TITLE           :=	Anemone3DS
-APP_DESCRIPTION     :=	A complete theming tool for the 3DS
+APP_DESCRIPTION     :=	Un outil de thème complet pour 3DS
 APP_AUTHOR          :=	Anemone3DS Team
 
 
