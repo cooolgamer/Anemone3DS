@@ -36,42 +36,42 @@
 static Instructions_s browser_instructions[MODE_AMOUNT] = {
     {
         .info_line = NULL,
-        .instructions = {
+        .instructions = { // for themes
             {
-                "\uE000 Download theme",
-                "\uE001 Go back"
+                "\uE000 Télécharger",
+                "\uE001 Retour"
             },
             {
-                "\uE002 Hold for more",
-                "\uE003 Preview theme"
+                "\uE002 Maintenir pour +",
+                "\uE003 Aperçu"
             },
             {
-                "\uE004 Previous page",
-                "\uE005 Next page"
+                "\uE004 Page précédente",
+                "\uE005 Page suivante"
             },
             {
-                "Exit",
+                "Quitter",
                 NULL
             }
         }
     },
     {
         .info_line = NULL,
-        .instructions = {
+        .instructions = { // for splashes
             {
-                "\uE000 Download splash",
-                "\uE001 Go back"
+                "\uE000 Télécharger",
+                "\uE001 Retour"
             },
             {
-                "\uE002 Hold for more",
-                "\uE003 Preview splash"
+                "\uE002 Maintenir pour +",
+                "\uE003 Aperçu"
             },
             {
-                "\uE004 Previous page",
-                "\uE005 Next page"
+                "\uE004 Page précédente",
+                "\uE005 Page suivante"
             },
             {
-                "Exit",
+                "Quitter",
                 NULL
             }
         }
@@ -79,22 +79,22 @@ static Instructions_s browser_instructions[MODE_AMOUNT] = {
 };
 
 static Instructions_s extra_instructions = {
-    .info_line = "Release \uE002 to cancel or hold \uE006 and release \uE002 to do stuff",
+    .info_line = "Relâchez \uE002: annuler. Maintenez \uE006 et relâchez \uE002: choisir",
     .instructions = {
         {
-            "\uE079 Jump to page",
-            "\uE07A Search tags"
+            "\uE079 Aller à la page",
+            "\uE07A Tags de recherche"
         },
         {
-            "\uE07B Toggle splash/theme",
-            "\uE07C Reload without cache"
+            "\uE07B Splash/Thème",
+            "\uE07C Actualiser sans cache"
         },
         {
             NULL,
             NULL
         },
         {
-            "Exit",
+            "Quitter",
             NULL
         }
     }
@@ -149,7 +149,7 @@ static C2D_Image * load_remote_smdh(Entry_s * entry, bool ignore_cache)
     Icon_s * smdh = (Icon_s *)smdh_buf;
 
     u16 fallback_name[0x81] = { 0 };
-    utf8_to_utf16(fallback_name, (u8 *)"No name", 0x80);
+    utf8_to_utf16(fallback_name, (u8 *)"Sans nom", 0x80);
 
     parse_smdh(smdh, entry, fallback_name);
     C2D_Image * image = loadTextureIcon(smdh);
@@ -244,7 +244,7 @@ static void load_remote_list(Entry_List_s * list, json_int_t page, EntryMode mod
                     load_remote_entries(list, value, ignore_cache, loading_screen);
                 else if (json_is_string(value) && !strcmp(key, THEMEPLAZA_JSON_ERROR_MESSAGE)
                     && !strcmp(json_string_value(value), THEMEPLAZA_JSON_ERROR_MESSAGE_NOT_FOUND))
-                    throw_error("No results for this search.", ERROR_LEVEL_WARNING);
+                    throw_error("Aucun résultat trouvé.", ERROR_LEVEL_WARNING);
             }
         }
         else
@@ -253,8 +253,7 @@ static void load_remote_list(Entry_List_s * list, json_int_t page, EntryMode mod
         json_decref(root);
     }
     else
-        throw_error("Couldn't download Theme Plaza data.\nMake sure WiFi is on.", ERROR_LEVEL_WARNING);
-
+        throw_error("Impossible de télécharger les données depuis\nThemePlaza, soyez sûr d'avoir le wifi activé.", ERROR_LEVEL_WARNING);
     free(page_json);
 }
 
@@ -373,12 +372,12 @@ jump_menu_callback(void * page_number, const char ** ppMessage, const char * tex
     int typed_value = atoi(text);
     if (typed_value > *(json_int_t *)page_number)
     {
-        *ppMessage = "The new page has to be\nsmaller or equal to the\nnumber of pages!";
+        *ppMessage = "La nouvelle page doit\nêtre + petite ou égale au\nnombre de pages!";
         return SWKBD_CALLBACK_CONTINUE;
     }
     else if (typed_value == 0)
     {
-        *ppMessage = "The new position has to\nbe positive!";
+        *ppMessage = "La nouvelle position\ndoit être positive!";
         return SWKBD_CALLBACK_CONTINUE;
     }
     return SWKBD_CALLBACK_OK;
@@ -401,11 +400,11 @@ static void jump_menu(Entry_List_s * list)
     JSON_INTEGER_FORMAT, list->tp_current_page);
     swkbdSetInitialText(&swkbd, numbuf);
 
-    sprintf(numbuf, "Which page do you want to jump to?");
+    sprintf(numbuf, "Entrez la page sur laquelle aller");
     swkbdSetHintText(&swkbd, numbuf);
 
-    swkbdSetButton(&swkbd, SWKBD_BUTTON_LEFT, "Cancel", false);
-    swkbdSetButton(&swkbd, SWKBD_BUTTON_RIGHT, "Jump", true);
+    swkbdSetButton(&swkbd, SWKBD_BUTTON_LEFT, "Annuler", false);
+    swkbdSetButton(&swkbd, SWKBD_BUTTON_RIGHT, "Confirmer", true);
     swkbdSetValidation(&swkbd, SWKBD_NOTEMPTY_NOTBLANK, 0, max_chars);
     swkbdSetFilterCallback(&swkbd, jump_menu_callback, &list->tp_page_count);
 
@@ -427,10 +426,10 @@ static void search_menu(Entry_List_s * list)
     SwkbdState swkbd;
 
     swkbdInit(&swkbd, SWKBD_TYPE_NORMAL, 2, max_chars);
-    swkbdSetHintText(&swkbd, "Which tags do you want to search for?");
+    swkbdSetHintText(&swkbd, "Entrez un tag de recherche ici");
 
-    swkbdSetButton(&swkbd, SWKBD_BUTTON_LEFT, "Cancel", false);
-    swkbdSetButton(&swkbd, SWKBD_BUTTON_RIGHT, "Search", true);
+    swkbdSetButton(&swkbd, SWKBD_BUTTON_LEFT, "Annuler", false);
+    swkbdSetButton(&swkbd, SWKBD_BUTTON_RIGHT, "Rechercher", true);
     swkbdSetValidation(&swkbd, SWKBD_NOTBLANK, 0, max_chars);
 
     SwkbdButton button = swkbdInputText(&swkbd, search, max_chars);
@@ -761,7 +760,7 @@ static SwkbdCallbackResult fat32filter(void *user, const char **ppMessage, const
 {
     (void)textlen;
     (void)user;
-    *ppMessage = "Input must not contain:\n><\"?;:/\\+,.|[=]";
+    *ppMessage = "Ne peut pas contenir:\n><\"?;:/\\+,.|[=]";
     if(strpbrk(text, "><\"?;:/\\+,.|[=]"))
     {
         DEBUG("illegal filename: %s\n", text);

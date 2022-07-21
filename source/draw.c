@@ -77,56 +77,56 @@ void init_screens(void)
 
     C2D_TextParse(&text[TEXT_VERSION], staticBuf, VERSION);
 
-    C2D_TextParse(&text[TEXT_THEME_MODE], staticBuf, "Theme mode");
-    C2D_TextParse(&text[TEXT_SPLASH_MODE], staticBuf, "Splash mode");
+    C2D_TextParse(&text[TEXT_THEME_MODE], staticBuf, "Thèmes");
+    C2D_TextParse(&text[TEXT_SPLASH_MODE], staticBuf, "Splashs");
 
-    C2D_TextParse(&text[TEXT_NO_THEME_FOUND], staticBuf, "No theme found");
-    C2D_TextParse(&text[TEXT_NO_SPLASH_FOUND], staticBuf, "No splash found");
+    C2D_TextParse(&text[TEXT_NO_THEME_FOUND], staticBuf, "Aucun thème trouvé");
+    C2D_TextParse(&text[TEXT_NO_SPLASH_FOUND], staticBuf, "Aucun splash trouvé");
 
-    C2D_TextParse(&text[TEXT_DOWNLOAD_FROM_QR], staticBuf, "Press \uE005 to download from QR");
+    C2D_TextParse(&text[TEXT_DOWNLOAD_FROM_QR], staticBuf, "Appuyez sur \uE005 pour téléch. depuis un QR");
 
-    C2D_TextParse(&text[TEXT_SWITCH_TO_SPLASHES], staticBuf, "Or \uE004 to switch to splashes");
-    C2D_TextParse(&text[TEXT_SWITCH_TO_THEMES], staticBuf, "Or \uE004 to switch to themes");
+    C2D_TextParse(&text[TEXT_SWITCH_TO_SPLASHES], staticBuf, "Ou \uE004 pour aller sur les splashs");
+    C2D_TextParse(&text[TEXT_SWITCH_TO_THEMES], staticBuf, "Ou \uE004 pour aller sur les thèmes");
 
-    C2D_TextParse(&text[TEXT_OR_START_TO_QUIT], staticBuf, "Or        to quit");
+    C2D_TextParse(&text[TEXT_OR_START_TO_QUIT], staticBuf, "Ou        pour quitter");
 
-    C2D_TextParse(&text[TEXT_BY_AUTHOR], staticBuf, "By ");
-    C2D_TextParse(&text[TEXT_SELECTED], staticBuf, "Selected:");
-    C2D_TextParse(&text[TEXT_SELECTED_SHORT], staticBuf, "Sel.:");
+    C2D_TextParse(&text[TEXT_BY_AUTHOR], staticBuf, "Par ");
+    C2D_TextParse(&text[TEXT_SELECTED], staticBuf, "Sélectionné:");
+    C2D_TextParse(&text[TEXT_SELECTED_SHORT], staticBuf, "Sél.:");
 
-    C2D_TextParse(&text[TEXT_THEMEPLAZA_THEME_MODE], staticBuf, "ThemePlaza Theme mode");
-    C2D_TextParse(&text[TEXT_THEMEPLAZA_SPLASH_MODE], staticBuf, "ThemePlaza Splash mode");
+    C2D_TextParse(&text[TEXT_THEMEPLAZA_THEME_MODE], staticBuf, "Thèmes de ThemePlaza");
+    C2D_TextParse(&text[TEXT_THEMEPLAZA_SPLASH_MODE], staticBuf, "Splashs de ThemePlaza");
 
-    C2D_TextParse(&text[TEXT_SEARCH], staticBuf, "Search...");
+    C2D_TextParse(&text[TEXT_SEARCH], staticBuf, "Rechercher...");
     C2D_TextParse(&text[TEXT_PAGE], staticBuf, "Page:");
 
-    C2D_TextParse(&text[TEXT_ERROR_QUIT], staticBuf, "Press \uE000 to quit.");
-    C2D_TextParse(&text[TEXT_ERROR_CONTINUE], staticBuf, "Press \uE000 to continue.");
+    C2D_TextParse(&text[TEXT_ERROR_QUIT], staticBuf, "Appuyez sur \uE000 pour quitter.");
+    C2D_TextParse(&text[TEXT_ERROR_CONTINUE], staticBuf, "Appuyez sur \uE000 pour continuer.");
 
-    C2D_TextParse(&text[TEXT_CONFIRM_YES_NO], staticBuf, "\uE000 Yes   \uE001 No");
+    C2D_TextParse(&text[TEXT_CONFIRM_YES_NO], staticBuf, "\uE000 Oui   \uE001 Non");
 
-    C2D_TextParse(&text[TEXT_INSTALL_LOADING_THEMES], staticBuf, "Loading themes, please wait...");
-    C2D_TextParse(&text[TEXT_INSTALL_LOADING_SPLASHES], staticBuf, "Loading splashes, please wait...");
-    C2D_TextParse(&text[TEXT_INSTALL_LOADING_ICONS], staticBuf, "Loading icons, please wait...");
+    C2D_TextParse(&text[TEXT_INSTALL_LOADING_THEMES], staticBuf, "Chargement des thèmes,\nveuillez patienter...");
+    C2D_TextParse(&text[TEXT_INSTALL_LOADING_SPLASHES], staticBuf, "Chargement des splashs,\nveuillez patienter...");
+    C2D_TextParse(&text[TEXT_INSTALL_LOADING_ICONS], staticBuf, "Chargement des icônes,\nveuillez patienter...");
 
-    C2D_TextParse(&text[TEXT_INSTALL_SPLASH], staticBuf, "Installing a splash...");
-    C2D_TextParse(&text[TEXT_INSTALL_SPLASH_DELETE], staticBuf, "Deleting installed splash...");
+    C2D_TextParse(&text[TEXT_INSTALL_SPLASH], staticBuf, "Installation du splash...");
+    C2D_TextParse(&text[TEXT_INSTALL_SPLASH_DELETE], staticBuf, "Effacement du splash installé...");
 
-    C2D_TextParse(&text[TEXT_INSTALL_SINGLE], staticBuf, "Installing a single theme...");
-    C2D_TextParse(&text[TEXT_INSTALL_SHUFFLE], staticBuf, "Installing shuffle themes...");
-    C2D_TextParse(&text[TEXT_INSTALL_BGM], staticBuf, "Installing BGM-only theme...");
-    C2D_TextParse(&text[TEXT_INSTALL_NO_BGM], staticBuf, "Installing theme without BGM...");
+    C2D_TextParse(&text[TEXT_INSTALL_SINGLE], staticBuf, "Installation du thème...");
+    C2D_TextParse(&text[TEXT_INSTALL_SHUFFLE], staticBuf, "Installation des thèmes aléatoires...");
+    C2D_TextParse(&text[TEXT_INSTALL_BGM], staticBuf, "Installation de la musique du thème...");
+    C2D_TextParse(&text[TEXT_INSTALL_NO_BGM], staticBuf, "Installation du thème sans musique...");
 
-    C2D_TextParse(&text[TEXT_INSTALL_DOWNLOAD], staticBuf, "Downloading...");
-    C2D_TextParse(&text[TEXT_INSTALL_CHECKING_DOWNLOAD], staticBuf, "Checking downloaded file...");
-    C2D_TextParse(&text[TEXT_INSTALL_ENTRY_DELETE], staticBuf, "Deleting from SD...");
+    C2D_TextParse(&text[TEXT_INSTALL_DOWNLOAD], staticBuf, "Téléchargement...");
+    C2D_TextParse(&text[TEXT_INSTALL_CHECKING_DOWNLOAD], staticBuf, "Vérification du fichier...");
+    C2D_TextParse(&text[TEXT_INSTALL_ENTRY_DELETE], staticBuf, "Effacement...");
 
-    C2D_TextParse(&text[TEXT_INSTALL_LOADING_REMOTE_THEMES], staticBuf, "Downloading theme list, please wait...");
-    C2D_TextParse(&text[TEXT_INSTALL_LOADING_REMOTE_SPLASHES], staticBuf, "Downloading splash list, please wait...");
-    C2D_TextParse(&text[TEXT_INSTALL_LOADING_REMOTE_PREVIEW], staticBuf, "Downloading preview, please wait...");
-    C2D_TextParse(&text[TEXT_INSTALL_LOADING_REMOTE_BGM], staticBuf, "Downloading BGM, please wait...");
-    C2D_TextParse(&text[TEXT_INSTALL_DUMPING_THEME], staticBuf, "Dumping theme, please wait...");
-    C2D_TextParse(&text[TEXT_INSTALL_DUMPING_ALL_THEMES], staticBuf, "Dumping official themes, please wait...");
+    C2D_TextParse(&text[TEXT_INSTALL_LOADING_REMOTE_THEMES], staticBuf, "Téléchargement de la liste des thèmes,\nveuillez patienter...");
+    C2D_TextParse(&text[TEXT_INSTALL_LOADING_REMOTE_SPLASHES], staticBuf, "Téléchargement de la liste des splashs,\nveuillez patienter...");
+    C2D_TextParse(&text[TEXT_INSTALL_LOADING_REMOTE_PREVIEW], staticBuf, "Téléchargement de l'aperçu,\nveuillez patienter...");
+    C2D_TextParse(&text[TEXT_INSTALL_LOADING_REMOTE_BGM], staticBuf, "Téléchargement de la musique,\nveuillez patienter...");
+    C2D_TextParse(&text[TEXT_INSTALL_DUMPING_THEME], staticBuf, "Dumping theme, veuillez patienter...");
+    C2D_TextParse(&text[TEXT_INSTALL_DUMPING_ALL_THEMES], staticBuf, "Dumping official themes,\nveuillez patienter...");
 
     for(int i = 0; i < TEXT_AMOUNT; i++)
         C2D_TextOptimize(&text[i]);
