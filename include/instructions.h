@@ -76,7 +76,7 @@ Instructions_s normal_instructions[MODE_AMOUNT] = {
 };
 
 Instructions_s install_instructions = {
-    .info_line = "Relâchez \uE000: annuler. Maintenez \uE006 et relâchez \uE000: installer",
+    .info_line = "Relâcher \uE000: annuler. Maintenir \uE006 et relâcher \uE000: installer",
     .instructions = {
         {
             "\uE079 Installation normale",
@@ -99,7 +99,7 @@ Instructions_s install_instructions = {
 
 Instructions_s extra_instructions[3] = {
     {
-        .info_line = "Relâchez \uE002: annuler. Maintenez \uE006 et relâchez \uE002: trier",
+        .info_line = "Relâcher \uE002: annuler. Maintenir \uE006 et relâcher \uE002: trier",
         .instructions = {
             {
                 "\uE079 Trier par nom",
@@ -120,10 +120,10 @@ Instructions_s extra_instructions[3] = {
         }
     },
     {
-        .info_line = "Relâchez \uE002: annuler. Maintenez \uE006 et relâchez \uE002: choisir",
+        .info_line = "Relâcher \uE002: annuler. Maintenir \uE006 et relâcher \uE002: choisir",
         .instructions = {
             {
-                "\uE079 Jump in the list",
+                "\uE079 Aller dans la liste",
                 "\uE07A Actualiser les icônes"
             },
             {
@@ -141,7 +141,7 @@ Instructions_s extra_instructions[3] = {
         }
     },
     {
-        .info_line = "Relâchez \uE002: annuler. Maintenez \uE006 et relâchez \uE002: dump",
+        .info_line = "Relâcher \uE002: annuler. Maintenir \uE006 et relâcher \uE002: dump",
         .instructions = {
             {
                 "\uE079 Dump le thème actuel",
