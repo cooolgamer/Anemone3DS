@@ -79,7 +79,7 @@ static Instructions_s browser_instructions[MODE_AMOUNT] = {
 };
 
 static Instructions_s extra_instructions = {
-    .info_line = "Relâchez \uE002: annuler. Maintenez \uE006 et relâchez \uE002: choisir",
+    .info_line = "Relâcher \uE002: annuler. Maintenir \uE006 et relâcher \uE002: choisir",
     .instructions = {
         {
             "\uE079 Aller à la page",
@@ -404,7 +404,7 @@ static void jump_menu(Entry_List_s * list)
     swkbdSetHintText(&swkbd, numbuf);
 
     swkbdSetButton(&swkbd, SWKBD_BUTTON_LEFT, "Annuler", false);
-    swkbdSetButton(&swkbd, SWKBD_BUTTON_RIGHT, "Confirmer", true);
+    swkbdSetButton(&swkbd, SWKBD_BUTTON_RIGHT, "OK", true);
     swkbdSetValidation(&swkbd, SWKBD_NOTEMPTY_NOTBLANK, 0, max_chars);
     swkbdSetFilterCallback(&swkbd, jump_menu_callback, &list->tp_page_count);
 

@@ -87,8 +87,8 @@ void parse_smdh(Icon_s *icon, Entry_s * entry, const u16 * fallback_name)
     if(icon == NULL)
     {
         memcpy(entry->name, fallback_name, 0x80);
-        utf8_to_utf16(entry->desc, (u8*)"No description", 0x100);
-        utf8_to_utf16(entry->author, (u8*)"Unknown author", 0x80);
+        utf8_to_utf16(entry->desc, (u8*)"Aucune description", 0x100);
+        utf8_to_utf16(entry->author, (u8*)"Auteur inconnu", 0x80);
         entry->placeholder_color = C2D_Color32(rand() % 255, rand() % 255, rand() % 255, 255);
         return;
     }
@@ -453,7 +453,7 @@ bool load_preview_from_buffer(void * buf, u32 size, C2D_Image * preview_image, i
 {
     if(size < 8 || png_sig_cmp(buf, 0, 8))
     {
-        throw_error("Invalid preview.png", ERROR_LEVEL_WARNING);
+        throw_error("preview.png invalide", ERROR_LEVEL_WARNING);
         return false;
     }
 
@@ -573,7 +573,7 @@ bool load_preview(Entry_List_s list, C2D_Image * preview_image, int * preview_of
     if(!size)
     {
         free(preview_buffer);
-        throw_error("No preview found.", ERROR_LEVEL_WARNING);
+        throw_error("Aucun aperçu trouvé.", ERROR_LEVEL_WARNING);
         return false;
     }
 

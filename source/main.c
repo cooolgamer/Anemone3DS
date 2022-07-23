@@ -251,12 +251,12 @@ static SwkbdCallbackResult jump_menu_callback(void* entries_count, const char** 
     int typed_value = atoi(text);
     if(typed_value > *(int*)entries_count)
     {
-        *ppMessage = "The new position has to be\nsmaller or equal to the\nnumber of entries!";
+        *ppMessage = "La nouvelle position doit\nêtre + petite ou égale au\nnombre d'entrées!";
         return SWKBD_CALLBACK_CONTINUE;
     }
     else if(typed_value == 0)
     {
-        *ppMessage = "The new position has to\nbe positive!";
+        *ppMessage = "La nouvelle position\ndoit être positive!";
         return SWKBD_CALLBACK_CONTINUE;
     }
     return SWKBD_CALLBACK_OK;
@@ -277,11 +277,11 @@ static void jump_menu(Entry_List_s * list)
     sprintf(numbuf, "%i", list->selected_entry);
     swkbdSetInitialText(&swkbd, numbuf);
 
-    sprintf(numbuf, "Where do you want to jump to?\nMay cause icons to reload.");
+    sprintf(numbuf, "Où voulez vous aller?\nCela actualisera les icônes.");
     swkbdSetHintText(&swkbd, numbuf);
 
-    swkbdSetButton(&swkbd, SWKBD_BUTTON_LEFT, "Cancel", false);
-    swkbdSetButton(&swkbd, SWKBD_BUTTON_RIGHT, "Jump", true);
+    swkbdSetButton(&swkbd, SWKBD_BUTTON_LEFT, "Annuler", false);
+    swkbdSetButton(&swkbd, SWKBD_BUTTON_RIGHT, "OK", true);
     swkbdSetValidation(&swkbd, SWKBD_NOTEMPTY_NOTBLANK, 0, max_chars);
     swkbdSetFilterCallback(&swkbd, jump_menu_callback, &list->entries_count);
 
@@ -383,7 +383,7 @@ int main(void)
         #ifndef CITRA_MODE
         if(R_FAILED(archive_result) && current_mode == MODE_THEMES)
         {
-            throw_error("Theme extdata does not exist!\nSet a default theme from the home menu.", ERROR_LEVEL_ERROR);
+            throw_error("Les données additionnelles des thèmes\nn'existe pas! Mettez un thème par défaut\nsur le menu home.", ERROR_LEVEL_ERROR);
             quit = true;
             continue;
         }
@@ -457,7 +457,7 @@ int main(void)
             {
                 enable_qr:
                 draw_base_interface();
-                draw_text_center(GFX_TOP, 100, 0.5f, 0.6f, 0.6f, colors[COLOR_WHITE], "Loading QR Scanner...");
+                draw_text_center(GFX_TOP, 100, 0.5f, 0.6f, 0.6f, colors[COLOR_WHITE], "Chargement du scanner QR...");
                 end_frame();
                 if(R_SUCCEEDED(camInit()))
                 {
@@ -473,15 +473,15 @@ int main(void)
                     }
                     else
                     {
-                        throw_error("Please connect to Wi-Fi before scanning QR codes", ERROR_LEVEL_WARNING);
+                        throw_error("Connectez vous au Wifi avant de scanner\ndes QR codes", ERROR_LEVEL_WARNING);
                     }
                 }
                 else
                 {
                     if(homebrew)
-                        throw_error("QR scanning doesnt work from the Homebrew\nLauncher, use the ThemePlaza browser instead.", ERROR_LEVEL_WARNING);
+                        throw_error("La fonctionnalité de scanner les QR codes ne\nfonctionne pas depuis l'Homebrew Launcher,\nutilisez ThemePlaza à la place.", ERROR_LEVEL_WARNING);
                     else
-                        throw_error("Your camera seems to have a problem,\nunable to scan QR codes.", ERROR_LEVEL_WARNING);
+                        throw_error("La caméra semble avoir un problème,\nimpossible de scanner de QR codes.", ERROR_LEVEL_WARNING);
                 }
 
                 continue;
@@ -591,11 +591,11 @@ int main(void)
                 {
                     if(current_list->shuffle_count > MAX_SHUFFLE_THEMES)
                     {
-                        throw_error("You have too many themes selected.", ERROR_LEVEL_WARNING);
+                        throw_error("Il y a trop de thèmes sélectionnés.", ERROR_LEVEL_WARNING);
                     }
                     else if(current_list->shuffle_count < 2)
                     {
-                        throw_error("You don't have enough themes selected.", ERROR_LEVEL_WARNING);
+                        throw_error("Il y a pas assez de thèmes sélectionnés.", ERROR_LEVEL_WARNING);
                     }
                     else
                     {
@@ -727,7 +727,7 @@ int main(void)
                     toggle_shuffle(current_list);
                     break;
                 case MODE_SPLASHES:
-                    if(draw_confirm("Are you sure you would like to delete\nthe installed splash?", current_list))
+                    if(draw_confirm("Voulez-vous supprimer le splash\nactuellement installé?", current_list))
                     {
                         draw_install(INSTALL_SPLASH_DELETE);
                         splash_delete();
@@ -743,7 +743,7 @@ int main(void)
         }
         else if(kDown & KEY_SELECT)
         {
-            if(draw_confirm("Are you sure you would like to delete this?", current_list))
+            if(draw_confirm("Voulez-vous supprimer ceci?", current_list))
             {
                 draw_install(INSTALL_ENTRY_DELETE);
                 delete_entry(current_entry, current_entry->is_zip);
