@@ -655,7 +655,7 @@ void draw_interface(Entry_List_s* list, Instructions_s instructions)
     if(current_mode == MODE_THEMES)
     {
         char * shuffle_count_string = NULL;
-        asprintf(&shuffle_count_string, "Shuffle: %i/10", list->shuffle_count);
+        asprintf(&shuffle_count_string, "Aléatoire: %i/10", list->shuffle_count);
         draw_text(7, 3, 0.6, 0.6, 0.6f, list->shuffle_count <= 10 && list->shuffle_count >= 2 ? colors[COLOR_WHITE] : colors[COLOR_RED], shuffle_count_string);
         free(shuffle_count_string);
     }

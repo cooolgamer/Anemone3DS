@@ -383,7 +383,7 @@ int main(void)
         #ifndef CITRA_MODE
         if(R_FAILED(archive_result) && current_mode == MODE_THEMES)
         {
-            throw_error("Les données additionnelles des thèmes\nn'existe pas! Mettez un thème par défaut\nsur le menu home.", ERROR_LEVEL_ERROR);
+            throw_error("Les données additionnel des thèmes\nn'existe pas! Mettez un thème par défaut\nsur le menu home.", ERROR_LEVEL_ERROR);
             quit = true;
             continue;
         }
@@ -457,7 +457,7 @@ int main(void)
             {
                 enable_qr:
                 draw_base_interface();
-                draw_text_center(GFX_TOP, 100, 0.5f, 0.6f, 0.6f, colors[COLOR_WHITE], "Chargement du scanner QR...");
+                draw_text_center(GFX_TOP, 100, 0.5f, 0.6f, 0.6f, colors[COLOR_WHITE], "Loading QR Scanner...");
                 end_frame();
                 if(R_SUCCEEDED(camInit()))
                 {
