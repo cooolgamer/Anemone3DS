@@ -78,6 +78,8 @@ Result init_sd(void)
     FSUSER_CreateDirectory(ArchiveSD, fsMakePath(PATH_ASCII, "/3ds/"  APP_TITLE  "/cache"), FS_ATTRIBUTE_DIRECTORY);
     FSUSER_CreateDirectory(ArchiveSD, fsMakePath(PATH_ASCII, "/3ds/" APP_TITLE "/BadgeBackups"), FS_ATTRIBUTE_DIRECTORY);
 
+    FSUSER_CreateDirectory(ArchiveSD, fsMakePath(PATH_ASCII, "/luma"), FS_ATTRIBUTE_DIRECTORY);
+
     return 0;
 }
 
@@ -221,6 +223,32 @@ Result close_archives(void)
     if(R_FAILED(res = FSUSER_CloseArchive(ArchiveBadgeExt))) return res;
 
     return 0;
+}
+
+Result process_kor_patch(void)
+{
+    Handle test_handle;
+    Result res;
+    FS_Path patch_path = fsMakePath(PATH_ASCII, "/luma/titles/000400300000A902/code.ips");
+
+    if(R_FAILED(res = FSUSER_OpenFile(&test_handle, ArchiveSD, patch_path, FS_OPEN_READ, 0))){
+        FSUSER_CreateDirectory(ArchiveSD, fsMakePath(PATH_ASCII, "/luma/titles"), FS_ATTRIBUTE_DIRECTORY);
+        FSUSER_CreateDirectory(ArchiveSD, fsMakePath(PATH_ASCII, "/luma/titles/000400300000A902"), FS_ATTRIBUTE_DIRECTORY);
+
+        FILE *fp = fopen("romfs:/kor-patch.ips", "rb");
+        fseek(fp, 0L, SEEK_END);
+        ssize_t size = ftell(fp);
+        char *patch_buf = malloc(size);
+        fseek(fp, 0L, SEEK_SET);
+        fread(patch_buf, 1, size, fp);
+        fclose(fp);
+        remake_file(patch_path, ArchiveSD, size);
+        buf_to_file(size, patch_path, ArchiveSD, patch_buf);
+        free(patch_buf);
+        return 0;
+    }
+
+    return -1;
 }
 
 Result load_parental_controls(Parental_Restrictions_s *restrictions)

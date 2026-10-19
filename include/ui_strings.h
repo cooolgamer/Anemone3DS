@@ -107,6 +107,8 @@ typedef struct {
     const char *cancel;
     const char *jump;
     const char *no_theme_extdata;
+    const char *kor_patch_success;
+    const char *kor_patch_fail;
     const char *loading_qr;
     const char *no_wifi;
     const char *qr_homebrew;

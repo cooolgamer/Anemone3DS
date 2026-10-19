@@ -395,13 +395,6 @@ int main(void)
     iconLoadingThread_arg.thread_arg = iconLoadingThread_args_void;
     iconLoadingThread_arg.run_thread = false;
 
-    #ifndef CITRA_MODE
-    if(R_SUCCEEDED(archive_result))
-        load_lists(lists);
-    #else
-    load_lists(lists);
-    #endif
-
     EntryMode current_mode = MODE_THEMES;
 
     bool preview_mode = false;
@@ -412,6 +405,32 @@ int main(void)
     bool extra_mode = false;
     int extra_index = 1;
     C2D_Image preview = {0};
+
+    u8 regionCode;
+    CFGU_SecureInfoGetRegion(&regionCode);
+    if(regionCode == 5) { // KOR
+        Result patch_install_res = process_kor_patch();
+        if(patch_install_res == 0) { // patch got installed, need to restart
+            throw_error(language.main.kor_patch_success, ERROR_LEVEL_WARNING);
+            APT_HardwareResetAsync();
+            goto app_exit;
+        } else if(patch_install_res != -1) { // error occured, -1 means the patch already exists, do nothing
+            throw_error(language.main.kor_patch_fail, ERROR_LEVEL_ERROR);
+            goto app_exit;
+        }
+    }
+
+    #ifndef CITRA_MODE
+    if(R_FAILED(archive_result))
+    {
+        throw_error(language.main.no_theme_extdata, ERROR_LEVEL_ERROR);
+        goto app_exit;
+    } else {
+        load_lists(lists);
+    }
+    #else
+    load_lists(lists);
+    #endif
 
     while(aptMainLoop())
     {
@@ -427,15 +446,6 @@ int main(void)
             time_home_pressed = svcGetSystemTick() / CPU_TICKS_PER_MSEC;
             home_displayed = true;
         }
-
-        #ifndef CITRA_MODE
-        if(R_FAILED(archive_result) && current_mode == MODE_THEMES)
-        {
-            throw_error(language.main.no_theme_extdata, ERROR_LEVEL_ERROR);
-            quit = true;
-            continue;
-        }
-        #endif
 
         hidScanInput();
         u32 kDown = hidKeysDown();
@@ -1125,6 +1135,8 @@ int main(void)
             }
         }
     }
+
+    app_exit:
 
     free_preview(preview);
     // aptSetHomeAllowed(true);
